@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages - JUCY ACADEMIE</title>
+  <link rel="stylesheet" href="message.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<style>
+    /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  color: #333;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #1e3c72;
+  color: white;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px;
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .logo img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.sidebar .logo h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.sidebar .menu {
+  list-style: none;
+}
+
+.sidebar .menu li {
+  margin: 15px 0;
+}
+
+.sidebar .menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.sidebar .menu li a i {
+  margin-right: 10px;
+}
+
+.sidebar .menu li a:hover,
+.sidebar .menu li a.active {
+  background: #2a5298;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 30px;
+  width: calc(100% - 250px);
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  color: #1e3c72;
+}
+
+.dashboard-header p {
+  color: #666;
+}
+
+/* Messages Table */
+.messages-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.messages-section th,
+.messages-section td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.messages-section th {
+  background: #2a5298;
+  color: white;
+}
+
+.messages-section tr:hover {
+  background: #f1f1f1;
+}
+
+/* Bouton */
+.btn-yellow {
+  background: #d8c40d;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-yellow:hover {
+  background: #c5b000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  .main-content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  .messages-section table {
+    font-size: 14px;
+  }
+}
+
+</style>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="logo.jpg" alt="JUCY ACADEMIE">
+      <h2>JUCY ACADEMIE</h2>
+    </div>
+    <ul class="menu">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li><a href="formations.html"><i class="fas fa-book"></i> Formations</a></li>
+      <li><a href="etudiants.html"><i class="fas fa-users"></i> Étudiants</a></li>
+      <li><a href="rendezvous.html"><i class="fas fa-calendar-check"></i> Rendez-vous</a></li>
+      <li><a href="paiement.html"><i class="fas fa-credit-card"></i> Paiements</a></li>
+      <li><a href="messages.html" class="active"><i class="fas fa-envelope"></i> Messages</a></li>
+      <li><a href="parametres.html"><i class="fas fa-cog"></i> Paramètres</a></li>
+      <li><a href="connexion.html"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="dashboard-header">
+      <h1>Messages reçus</h1>
+      <p>Consultez et gérez vos messages</p>
+    </header>
+
+    <!-- Liste des messages -->
+    <section class="messages-section">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Sujet</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn-yellow">Voir</button></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn-yellow">Voir</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>

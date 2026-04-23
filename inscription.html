@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription - JUCY ACADEMIE</title>
+  <link rel="stylesheet" href="formation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<style>
+  /* Section contenant le formulaire */
+.decouvrir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f5f5f5;
+}
+
+/* Formulaire */
+.inscription-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Labels */
+.inscription-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+/* Champs texte et select */
+.inscription-form input,
+.inscription-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.inscription-form input:focus,
+.inscription-form select:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+
+/* Bouton */
+.inscription-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #d8c40d;
+  color: black;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.inscription-form button:hover {
+  background: #c5b000;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .inscription-form {
+    padding: 25px;
+  }
+
+  .inscription-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+</style>
+<body>
+  
+<div class="hero-content">
+      <nav class="navbar">
+        <ul>
+          <li class="logo">
+            <a href="index.html">
+              <img src="logo.jpg" alt="JUCY ACADEMIE">
+            </a>
+          </li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="formations.html">Formations</a></li>
+
+          <li class="dropdown">
+            <details>
+              <summary>Demande ▼</summary>
+              <ul class="dropdown-menu">
+                <li><a href="rendezvous.html">Prendre rendez-vous</a></li>
+                <li><a href="paiement.html">Paiement</a></li>
+              </ul>
+            </details>
+          </li>
+
+          <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+          <li><a href="connexion.html">Se connecter</a></li>
+          <li><a href="rejoint.html" class="btn-yellow">Nous rejoindre</a></li>
+        </ul>
+      </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Inscrivez-vous à JUCY ACADEMIE</h1>
+      <p>Rejoignez notre communauté et commencez votre parcours de formation.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="decouvrir">
+      <form class="inscription-form" action="traitement.php" method="post">
+        <label for="nom">Nom complet</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="formation">Choisissez une formation</label>
+        <select id="formation" name="formation" required>
+          <option value="">Sélectionnez </option>
+          <option value="DWWM">Dévélopeur web et web mobile</option>
+          <option value="TSSR">Technicien Supérieur Systèmes & Réseaux</option>
+          <option value="TAI">Technicien en Administration Informatique </option>
+          <option value="CDA">Communication Digitale & Publicité </option>
+          <option value="Anglais">Formation Anglais Professionnel</option>
+          <option value="Français">Formation Français</option>
+          <option value="Chinois">Formation Chinois</option>
+          <option value="Informatique Bureautique">Informatique Bureautique</option>
+        </select>
+
+        <button type="submit" class="btn-yellow">S'inscrire</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+const passwordInput = document.getElementById("password");
+const eyeIcon = document.createElement("i");
+eyeIcon.classList.add("fa", "fa-eye");
+eyeIcon.style.position = "absolute";
+eyeIcon.style.right = "60px";
+eyeIcon.style.top = "270px";
+eyeIcon.style.cursor = "pointer";
+eyeIcon.style.color = "#888";
+
+passwordInput.parentNode.style.position = "relative";
+passwordInput.parentNode.appendChild(eyeIcon);
+
+eyeIcon.addEventListener("click", function() {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    }
+});
+
+document.querySelector(".inscription-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let nom = document.getElementById("nom").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let formation = document.getElementById("formation").value;
+
+    if (nom === "" || email === "" || password === "" || formation === "") {
+        alert("⚠️ Veuillez remplir tous les champs !");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("⚠️ Le mot de passe doit contenir au moins 6 caractères.");
+        return;
+    }
+
+    alert(`✅ Inscription réussie !\nBienvenue ${nom}, vous pouvez maintenant vous connecter.`);
+
+    window.location.href = "connexion.html";
+});
+</script>
+
+
+  <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2>JUCY Académie</h2>
+                <p>Votre partenaire pour une carrière réussie en informatique, langues et communication.</p>
+
+                <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=61584764781140" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/jucyacademie" target="_blank"><i class="fab fa-twitter"></i></a>
+                 <a href="https://instagram.com/jucyacademie" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+
+
+             <div class="footer-section">
+                <h3>Nos Formations</h3>
+                <ul>
+                    <li><a href="voir dwww.html">Développement Web & Mobile</a></li>
+                    <li><a href="voir tssr.html">Technicien Réseaux</a></li>
+                    <li><a href="voir anglais.html">Langues Internationales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>L'École</h3>
+                <ul>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p>📍 Ambatolampy Antehiroka, Antananarivo</p>
+                <p>📞 034 47 762 06</p>
+                <p>✉️ jucyacademie@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 JUCY ACADEMIE - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendez-vous - JUCY ACADEMIE</title>
+
+  <link rel="stylesheet" href="formation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f5f5f5;
+    }
+
+    .rdv-banner {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .rdv-banner h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .rdv-section {
+      padding: 60px 20px;
+    }
+
+    .rdv-container {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .rdv-text {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .btn-yellow {
+      width: 100%;
+      background: #d8c40d;
+      color: black;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .btn-yellow:hover {
+      background: #c5b000;
+    }
+
+    .success-box {
+      margin-top: 20px;
+      padding: 18px;
+      background: #d4edda;
+      color: #155724;
+      border-radius: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+ <header class="hero">
+        <div class="hero-content">
+            <nav class="navbar">
+                <ul>
+                    <li class="logo">
+                        <a href="index.html">
+                          <img src="logo.jpg" alt="JUCY ACADEMIE">
+                        </a>
+                    </li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+
+                    <li class="dropdown">
+                        <details>
+                            <summary>Demande ▼</summary>
+                            <ul class="dropdown-menu">
+                                <li><a href="rendezvous.html">Prendre rendez-vous</a></li>
+                                <li><a href="paiement.html">Paiement</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="connexion.html">Se connecter</a></li>
+                    <li><a href="rejoint.html" class="btn-yellow">Nous rejoindre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<section class="formations-hero">
+  <h1>Prendre <span>un rendez-vous</span></h1>
+  <p>Réservez votre créneau avec JUCY ACADEMIE</p>
+</section>
+
+<section class="rdv-section">
+  <div class="rdv-container">
+    <h2>Informations du rendez-vous</h2>
+
+    <p class="rdv-text">
+      Veuillez remplir les informations ci-dessous.
+    </p>
+
+    <form id="rdvForm">
+
+      <div class="form-group">
+        <label>Nom complet</label>
+        <input type="text" id="nom" required>
+      </div>
+
+      <div class="form-group">
+        <label>Adresse email</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" id="telephone" required>
+      </div>
+
+      <div class="form-group">
+        <label>Date du rendez-vous</label>
+        <input type="date" id="date" required>
+      </div>
+
+      <div class="form-group">
+        <label>Heure du rendez-vous</label>
+        <input type="time" id="heure" required>
+      </div>
+
+      <div class="form-group">
+        <label>Formation choisie</label>
+        <select id="objet" required>
+          <option value="">-- Choisissez une formation --</option>
+          <option>DWWM</option>
+          <option>TSSR</option>
+          <option>TAI</option>
+          <option>CDA</option>
+          <option>Anglais</option>
+          <option>Français DELF</option>
+          <option>Chinois HSK</option>
+          <option>Bureautique</option>
+        </select>
+      </div>
+
+      <button type="submit" id="btnSubmit" class="btn-yellow">
+        Réserver
+      </button>
+    </form>
+
+    <div id="message-confirmation"></div>
+  </div>
+</section>
+
+
+<script>
+document.getElementById("rdvForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+     let nom = document.getElementById("nom").value;
+    let email = document.getElementById("email").value;
+    let telephone = document.getElementById("telephone").value;
+    let date = document.getElementById("date").value;
+    let heure = document.getElementById("heure").value;
+    let objet = document.getElementById("objet").value;
+
+     document.getElementById("message-confirmation").innerHTML = `
+        <div class="success-box">
+            ✅ Rendez-vous enregistré !<br>
+            Merci <strong>${nom}</strong>, votre rendez-vous pour 
+            <strong>${objet}</strong> le <strong>${date}</strong> à <strong>${heure}</strong> a été pris en compte.
+        </div>
+    `;
+
+     let destinataire = "jucyacademie@gmail.com"; 
+    let sujet = "Demande de rendez-vous - JUCY ACADEMIE";
+    let message = `Bonjour,\n\nJe m'appelle ${nom}.\n\nJe souhaite réserver un rendez-vous pour la formation ${objet}.\n\nDate : ${date}\nHeure : ${heure}\nTéléphone : ${telephone}\nEmail : ${email}\n\nMerci de confirmer.\n\nCordialement,\n${nom}`;
+
+     window.location.href = `mailto:${destinataire}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(message)}`;
+
+     this.reset();
+});
+</script>
+
+
+<footer class="footer">
+   
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2>JUCY Académie</h2>
+                <p>Votre partenaire pour une carrière réussie en informatique, langues et communication.</p>
+
+                <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=61584764781140" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/jucyacademie" target="_blank"><i class="fab fa-twitter"></i></a>
+                 <a href="https://instagram.com/jucyacademie" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+
+
+             <div class="footer-section">
+                <h3>Nos Formations</h3>
+                <ul>
+                    <li><a href="voir dwww.html">Développement Web & Mobile</a></li>
+                    <li><a href="voir tssr.html">Technicien Réseaux</a></li>
+                    <li><a href="voir anglais.html">Langues Internationales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>L'École</h3>
+                <ul>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p>📍 Ambatolampy Antehiroka, Antananarivo</p>
+                <p>📞 034 47 762 06</p>
+                <p>✉️ jucyacademie@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 JUCY ACADEMIE - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>

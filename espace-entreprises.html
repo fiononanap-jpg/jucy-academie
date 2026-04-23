@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace entreprises - JUCY ACADEMIE</title>
+    <link rel="stylesheet" href="formation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<style>
+    .entreprise-banner {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 40px 10px;
+}
+
+.entreprise-banner h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.entreprise-section {
+    padding: 60px 20px;
+    background: #f8f8f8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.entreprise-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.entreprise-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.entreprise-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.entreprise-card i {
+    font-size: 40px;
+    color: #d8c40d;
+    margin-bottom: 20px;
+}
+
+.contact-entreprise {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-top: 60px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.contact-entreprise form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-entreprise input,
+.contact-entreprise textarea {
+    padding: 15px;
+    border: 1px solid #1b19196c;
+    border-radius: 8px;
+}
+
+.btn-yellow {
+    background: #d8c40d;
+    color: black;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
+<header class="hero">
+    <div class="hero-content">
+        <nav class="navbar">
+            <ul>
+                <li class="logo">
+                    <a href="index.html">
+                        <img src="logo.jpg" alt="JUCY ACADEMIE">
+                    </a>
+                </li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="formations.html">Formations</a></li>
+                <li class="dropdown">
+                    <details>
+                        <summary>Demande ▼</summary>
+                        <ul class="dropdown-menu">
+                            <li><a href="rendezvous.html">Prendre rendez-vous</a></li>
+                            <li><a href="paiement.html">Paiement</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a href="espace-entreprises.html" class="active">Espace entreprises</a></li>
+                <li><a href="connexion.html">Se connecter</a></li>
+                <li><a href="rejoint.html" class="btn-yellow">Nous rejoindre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+<section class="formations-hero">
+  <h1>Espace <span>entreprises</span></h1>
+    <p>Construisons ensemble l’avenir professionnel de nos talents</p>
+</section>
+
+<section class="entreprise-section">
+    <div class="container">
+
+        <div class="entreprise-intro">
+            <h2>Partenariat avec les entreprises</h2>
+            <p>
+                JUCY ACADEMIE accompagne les entreprises dans le recrutement de talents qualifiés
+                en informatique, communication digitale et langues professionnelles.
+            </p>
+        </div>
+
+        <div class="entreprise-cards">
+            <div class="entreprise-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Recrutement</h3>
+                <p>Recrutez nos étudiants formés aux métiers du numérique.</p>
+            </div>
+
+            <div class="entreprise-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Partenariat</h3>
+                <p>Développez des collaborations et projets communs.</p>
+            </div>
+
+            <div class="entreprise-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Stages</h3>
+                <p>Accueillez nos étudiants pour des stages professionnels.</p>
+            </div>
+        </div>
+
+        <div class="contact-entreprise">
+            <h2>Contact entreprise</h2>
+            <form>
+                <input type="text" placeholder="Nom de l'entreprise" required>
+                <input type="email" placeholder="Adresse email" required>
+                <input type="tel" placeholder="Téléphone" required>
+                <textarea rows="5" placeholder="Votre message"></textarea>
+                <button type="submit" class="btn-yellow">Envoyer</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector(".contact-entreprise form");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const entreprise = form.querySelector('input[placeholder="Nom de l\'entreprise"]').value;
+        const email = form.querySelector('input[placeholder="Adresse email"]').value;
+        const tel = form.querySelector('input[placeholder="Téléphone"]').value;
+        const message = form.querySelector('textarea').value;
+
+        // Message de confirmation sur le site
+        alert("Merci " + entreprise + "! Votre demande a été envoyée. Nous vous contacterons rapidement.");
+
+        // Préparer l'email
+        const subject = encodeURIComponent("Demande de partenariat - " + entreprise);
+        const body = encodeURIComponent(
+            "Nom de l'entreprise: " + entreprise + "\n" +
+            "Email: " + email + "\n" +
+            "Téléphone: " + tel + "\n\n" +
+            "Message:\n" + message
+        );
+
+        // Ouvrir le client mail
+        window.location.href = "mailto:jucyacademie@gmail.com?subject=" + subject + "&body=" + body;
+
+        // Réinitialiser le formulaire
+        form.reset();
+    });
+});
+</script>
+
+
+<footer class="footer">
+   
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2>JUCY Académie</h2>
+                <p>Votre partenaire pour une carrière réussie en informatique, langues et communication.</p>
+
+                <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=61584764781140" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/jucyacademie" target="_blank"><i class="fab fa-twitter"></i></a>
+                 <a href="https://instagram.com/jucyacademie" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+
+
+            <div class="footer-section">
+                <h3>Nos Formations</h3>
+                <ul>
+                    <li><a href="voir dwww.html">Développement Web & Mobile</a></li>
+                    <li><a href="voir tssr.html">Technicien Réseaux</a></li>
+                    <li><a href="voir anglais.html">Langues Internationales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>L'École</h3>
+                <ul>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p>📍 Ambatolampy Antehiroka, Antananarivo</p>
+                <p>📞 034 47 762 06</p>
+                <p>✉️ jucyacademie@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 JUCY ACADEMIE - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>

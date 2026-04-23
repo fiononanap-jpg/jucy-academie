@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - JUCY ACADEMIE</title>
+    <link rel="stylesheet" href="formation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<style>
+.payment-banner {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.payment-banner h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.payment-section {
+    padding: 60px 20px;
+    background: #f5f5f5;
+}
+
+.payment-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.payment-text {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.btn-yellow {
+    width: 100%;
+    background: #d8c40d;
+    color: black;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn-yellow:hover {
+    background: #c5b000;
+}
+</style>
+<body>
+ <header class="hero">
+        <div class="hero-content">
+            <nav class="navbar">
+                <ul>
+                    <li class="logo">
+                        <a href="index.html">
+                          <img src="logo.jpg" alt="JUCY ACADEMIE">
+                        </a>
+                    </li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+
+                    <li class="dropdown">
+                        <details>
+                            <summary>Demande ▼</summary>
+                            <ul class="dropdown-menu">
+                                <li><a href="rendezvous.html">Prendre rendez-vous</a></li>
+                                <li><a href="paiement.html">Paiement</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="connexion.html">Se connecter</a></li>
+                    <li><a href="rejoint.html" class="btn-yellow">Nous rejoindre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<section class="formations-hero">
+  <h1>Paiement <span>de formation</span></h1>
+    <p>Effectuez votre paiement en toute sécurité</p>
+</section>
+
+<section class="payment-section">
+    <div class="payment-container">
+        <h2>Informations de paiement</h2>
+        <p class="payment-text">
+            Veuillez remplir les informations ci-dessous pour valider votre inscription.
+        </p>
+
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="nom">Nom complet</label>
+                <input type="text" id="nom" placeholder="Entrez votre nom complet" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" placeholder="exemple@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="formation">Formation choisie</label>
+                <select id="formation" required>
+                    <option value="">-- Choisissez une formation --</option>
+                    <option>DWWM</option>
+                    <option>TSSR</option>
+                    <option>TAI</option>
+                    <option>CDA</option>
+                    <option>Anglais</option>
+                    <option>Français DELF</option>
+                    <option>Chinois HSK</option>
+                    <option>Bureautique</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="montant">Montant (Ar)</label>
+                <input type="number" id="montant" placeholder="" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mode">Mode de paiement</label>
+                <select id="mode" required>
+                    <option>Mvola</option>
+                    <option>Orange Money</option>
+                    <option>Airtel Money</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-yellow">
+                Payer maintenant
+            </button>
+        </form>
+
+        <div id="paymentMessage"></div>
+    </div>
+</section>
+
+<script>
+document.getElementById("paymentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let nom = document.getElementById("nom").value;
+    let email = document.getElementById("email").value;
+    let formation = document.getElementById("formation").value;
+    let montant = document.getElementById("montant").value;
+    let mode = document.getElementById("mode").value;
+
+    // ✅ Message de confirmation sur le site
+    document.getElementById("paymentMessage").innerHTML = `
+        <div style="
+            margin-top:20px;
+            padding:15px;
+            background:#d4edda;
+            color:#155724;
+            border-radius:8px;
+            font-weight:bold;
+            text-align:center;">
+            ✅ Paiement effectué avec succès !<br>
+            Merci <strong>${nom}</strong>, votre paiement de 
+            <strong>${montant} Ar</strong> pour la formation 
+            <strong>${formation}</strong> via <strong>${mode}</strong> a été enregistré.<br><br>
+        </div>
+    `;
+
+    // ✅ Message à envoyer par email
+    let destinataire = "jucyacademie@gmail.com"; 
+    let sujet = "Confirmation de paiement - JUCY ACADEMIE";
+    let message = `Bonjour,\n\nJe m'appelle ${nom}.\n\nJ'ai effectué un paiement de ${montant} Ar pour la formation ${formation} via ${mode}.\n\nAdresse email : ${email}\n\nMerci de confirmer la réception.\n\nCordialement,\n${nom}`;
+
+    // ✅ Ouvre directement la boîte mail (Gmail/Outlook) avec le message pré-rempli
+    window.location.href = `mailto:${destinataire}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(message)}`;
+
+    // Réinitialise le formulaire
+    this.reset();
+});
+</script>
+
+<p>📞 Pour confirmer votre paiement, veuillez contacter directement le numéro indiqué dans la section 
+   <a href="contact.html"><strong>Contacts</strong></a> du site.</p> 
+
+<p>Vous pouvez également envoyer votre paiement directement au numéro de téléphone mentionné dans la section 
+   <a href="contact.html"><strong>Contacts</strong></a>.</p>
+
+
+<footer class="footer">
+   
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h2>JUCY Académie</h2>
+                <p>Votre partenaire pour une carrière réussie en informatique, langues et communication.</p>
+
+                <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=61584764781140" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/jucyacademie" target="_blank"><i class="fab fa-twitter"></i></a>
+                 <a href="https://instagram.com/jucyacademie" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+
+
+            <div class="footer-section">
+                <h3>Nos Formations</h3>
+                <ul>
+                    <li><a href="voir dwww.html">Développement Web & Mobile</a></li>
+                    <li><a href="voir tssr.html">Technicien Réseaux</a></li>
+                    <li><a href="voir anglais.html">Langues Internationales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>L'École</h3>
+                <ul>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="espace-entreprises.html">Espace entreprises</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p>📍 Ambatolampy Antehiroka, Antananarivo</p>
+                <p>📞 034 47 762 06</p>
+                <p>✉️ jucyacademie@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 JUCY ACADEMIE - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>
